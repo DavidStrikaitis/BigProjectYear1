@@ -10,6 +10,7 @@
 
 #include"Globals.h"
 #include"Blank.h"
+#include"Menu.h"
 
 class Game
 {
@@ -22,6 +23,7 @@ public:
 	void run();
 
 	static GameMode s_currentGameMode;
+	static bool s_closeGame;
 
 private:
 
@@ -34,6 +36,7 @@ private:
 	bool m_exitGame; // control exiting game
 
 	Blank blankGameMode;
+	Menu menuGameMode;
 
 };
 

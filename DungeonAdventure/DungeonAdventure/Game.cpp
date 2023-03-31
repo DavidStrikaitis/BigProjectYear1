@@ -11,7 +11,8 @@
 #include "Game.h"
 #include <iostream>
 
-GameMode Game::s_currentGameMode = GameMode::Blank;
+GameMode Game::s_currentGameMode = GameMode::menu;
+bool Game::s_closeGame = false;
 
 /// <summary>
 /// default constructor
@@ -20,10 +21,8 @@ GameMode Game::s_currentGameMode = GameMode::Blank;
 /// load and setup thne image
 /// </summary>
 Game::Game() :
-	m_window{ sf::VideoMode{ SCREEN_WIDTH, SCREEN_HEIGHT, 32U }, "Dungeon Adventure" },
-	m_exitGame{false} //when true game will exit
+	m_window{ sf::VideoMode{ SCREEN_WIDTH, SCREEN_HEIGHT, 32U }, "Dungeon Adventure" }
 {
-	
 }
 
 /// <summary>
@@ -73,7 +72,7 @@ void Game::processEvents()
 	{
 		if ( sf::Event::Closed == newEvent.type) // window message
 		{
-			m_exitGame = true;
+			s_closeGame = true;
 		}
 	}
 	switch (s_currentGameMode)
@@ -82,6 +81,7 @@ void Game::processEvents()
 		blankGameMode.processEvents(newEvent);
 		break;
 	case GameMode::menu:
+		menuGameMode.processEvents(newEvent);
 		break;
 	default:
 		break;
@@ -94,7 +94,7 @@ void Game::processEvents()
 /// <param name="t_deltaTime">time interval per frame</param>
 void Game::update(sf::Time t_deltaTime)
 {
-	if (m_exitGame)
+	if (s_closeGame)
 	{
 		m_window.close();
 	}
@@ -104,6 +104,7 @@ void Game::update(sf::Time t_deltaTime)
 		blankGameMode.processUpdate(t_deltaTime);
 		break;
 	case GameMode::menu:
+		menuGameMode.processUpdate(t_deltaTime);
 		break;
 	default:
 		break;
@@ -122,6 +123,7 @@ void Game::render()
 		blankGameMode.render(m_window);
 		break;
 	case GameMode::menu:
+		menuGameMode.render(m_window);
 		break;
 	default:
 		break;
