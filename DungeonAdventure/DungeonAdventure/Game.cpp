@@ -83,6 +83,15 @@ void Game::processEvents()
 	case GameMode::menu:
 		menuGameMode.processEvents(newEvent);
 		break;
+	case GameMode::instructions:
+		InstructionsGameMode.processEvents(newEvent);
+		break;
+	case GameMode::levels:
+		levelsGameMode.processEvents(newEvent);
+		break;
+	case GameMode::shop:
+		shopGameMode.processEvents(newEvent);
+		break;
 	default:
 		break;
 	}
@@ -106,6 +115,15 @@ void Game::update(sf::Time t_deltaTime)
 	case GameMode::menu:
 		menuGameMode.processUpdate(t_deltaTime);
 		break;
+	case GameMode::instructions:
+		InstructionsGameMode.processUpdate(t_deltaTime);
+		break;
+	case GameMode::levels:
+		levelsGameMode.processUpdate(t_deltaTime);
+		break;
+	case GameMode::shop:
+		shopGameMode.processUpdate(t_deltaTime);
+		break;
 	default:
 		break;
 	}
@@ -124,6 +142,15 @@ void Game::render()
 		break;
 	case GameMode::menu:
 		menuGameMode.render(m_window);
+		break;
+	case GameMode::instructions:
+		InstructionsGameMode.render(m_window);
+		break;
+	case GameMode::levels:
+		levelsGameMode.render(m_window);
+		break;
+	case GameMode::shop:
+		shopGameMode.render(m_window);
 		break;
 	default:
 		break;

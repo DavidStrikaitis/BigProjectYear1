@@ -11,6 +11,9 @@
 #include"Globals.h"
 #include"Blank.h"
 #include"Menu.h"
+#include"Shop.h"
+#include"Levels.h"
+#include"Instructions.h"
 
 class Game
 {
@@ -37,6 +40,9 @@ private:
 
 	Blank blankGameMode;
 	Menu menuGameMode;
+	Shop shopGameMode;
+	Levels levelsGameMode;
+	Instructions InstructionsGameMode;
 
 };
 

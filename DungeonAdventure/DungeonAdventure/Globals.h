@@ -6,5 +6,8 @@ const unsigned int SCREEN_HEIGHT = 600u; // height of the screen window
 enum class GameMode
 {
 	Blank, // used only as a template and maybe for debugging
-	menu
+	menu,
+	levels,
+	instructions,
+	shop
 };

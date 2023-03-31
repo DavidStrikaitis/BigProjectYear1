@@ -62,10 +62,13 @@ void Menu::processMouseUp()
 	switch (mouse)
 	{
 	case 0:
+		Game::s_currentGameMode = GameMode::levels;
 		break;
 	case 1:
+		Game::s_currentGameMode = GameMode::instructions;
 		break;
 	case 2:
+		Game::s_currentGameMode = GameMode::shop;
 		break;
 	case 3:
 		Game::s_closeGame = true;
